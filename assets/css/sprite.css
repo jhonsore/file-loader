@@ -1,0 +1,94 @@
+body{
+  background: green;
+}
+
+  .spt{background-image: url(../img/sprite.png?v=1547031809181); display:block}
+   .spt-amb-icon{background-position: -310px -896px; width: 24px; height: 23px;  }
+   .spt-amb-icon{background-position: -228.5px -348.5px; width: 24px; height: 23px; background-size: 530.5px 503.5px; }
+   .spt-arrow-back{background-position: -430px -750px; width: 20px; height: 16px;  }
+   .spt-arrow-back{background-position: -88px -448px; width: 20px; height: 16px; background-size: 530.5px 503.5px; }
+   .spt-arrow-down{background-position: -605px -655px; width: 16px; height: 10px;  }
+   .spt-arrow-down{background-position: -160px -375px; width: 16px; height: 10px; background-size: 530.5px 503.5px; }
+   .spt-arrow-right{background-position: -455px -750px; width: 20px; height: 16px;  }
+   .spt-arrow-right{background-position: -43px -448px; width: 20px; height: 16px; background-size: 530.5px 503.5px; }
+   .spt-back{background-position: -300px -814px; width: 56px; height: 56px;  }
+   .spt-back{background-position: -467.5px -269px; width: 56px; height: 56px; background-size: 530.5px 503.5px; }
+  .ativo .spt-bookmark{background-position: -58.5px -348.5px; width: 44px; height: 44px; background-size: 530.5px 503.5px; }
+   .spt-bookmark{background-position: -902px -697px; width: 44px; height: 44px;  }
+  .ativo .spt-bookmark2{background-position: 0px -348.5px; width: 56px; height: 56px; background-size: 530.5px 503.5px; }
+   .spt-bookmark2{background-position: -960px -358px; width: 56px; height: 56px;  }
+   .spt-bookmark2{background-position: -350.5px -269px; width: 56px; height: 56px; background-size: 530.5px 503.5px; }
+  .ativo .spt-bookmark3{background-position: -79.5px -269px; width: 70px; height: 70px; background-size: 530.5px 503.5px; }
+   .spt-bookmark3{background-position: -164px -814px; width: 70px; height: 70px;  }
+   .spt-bookmark3{background-position: -152px -269px; width: 70px; height: 70px; background-size: 530.5px 503.5px; }
+   .spt-bookmark4{background-position: -239px -814px; width: 56px; height: 56px;  }
+   .spt-bookmark4{background-position: -409px -269px; width: 56px; height: 56px; background-size: 530.5px 503.5px; }
+  .ativo .spt-bookmark5{background-position: -400.5px -212px; width: 51px; height: 51px; background-size: 530.5px 503.5px; }
+   .spt-bookmark5{background-position: -479px -814px; width: 51px; height: 51px;  }
+   .spt-bookmark5{background-position: -454px -212px; width: 51px; height: 51px; background-size: 530.5px 503.5px; }
+   .spt-bookmark{background-position: -480px -132.5px; width: 44px; height: 44px; background-size: 530.5px 503.5px; }
+   .spt-brand{background-position: -210px -750px; width: 68px; height: 24px;  }
+   .spt-brand{background-position: -105px -348.5px; width: 68px; height: 24px; background-size: 530.5px 503.5px; }
+   .spt-bt-close{background-position: -361px -814px; width: 56px; height: 56px;  }
+   .spt-bt-close{background-position: -292px -269px; width: 56px; height: 56px; background-size: 530.5px 503.5px; }
+   .spt-caldos{background-position: -221px -896px; width: 26px; height: 26px;  }
+   .spt-caldos{background-position: -211px -407px; width: 26px; height: 26px; background-size: 530.5px 503.5px; }
+   .spt-cardapio-icon{background-position: -267px 0px; width: 131px; height: 132px; background-size: 530.5px 503.5px; }
+   .spt-chevron-down{background-position: -584px -655px; width: 16px; height: 10px;  }
+   .spt-chevron-down{background-position: -141.5px -375px; width: 16px; height: 10px; background-size: 530.5px 503.5px; }
+   .spt-close{background-position: -357px -750px; width: 20px; height: 20px;  }
+   .spt-close{background-position: -462.5px -407px; width: 20px; height: 20px; background-size: 530.5px 503.5px; }
+   .spt-empty-bookmark{background-position: -267px -269px; width: 262px; height: 264px;  }
+   .spt-empty-bookmark{background-position: -133.5px 0px; width: 131px; height: 132px; background-size: 530.5px 503.5px; }
+   .spt-empty-search{background-position: 0px -269px; width: 262px; height: 264px;  }
+   .spt-empty-search{background-position: -267px -134.5px; width: 131px; height: 132px; background-size: 530.5px 503.5px; }
+   .spt-home.active:hover{background-position: -315.5px -407px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-home.active{background-position: -475.5px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+  .tab-link-active .spt-home{background-position: -279.5px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-home{background-position: -304px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-ico-video{background-position: 0px -949px; width: 20px; height: 28px;  }
+   .spt-ico-video{background-position: -510.5px -179px; width: 20px; height: 28px; background-size: 530.5px 503.5px; }
+   .spt-icon-intro{background-position: 0px 0px; width: 131px; height: 132px; background-size: 530.5px 503.5px; }
+   .spt-icon-play-msg{background-position: -449px -538px; width: 130px; height: 130px;  }
+   .spt-icon-play-msg{background-position: -400.5px 0px; width: 130px; height: 130px; background-size: 530.5px 503.5px; }
+   .spt-lock{background-position: -25px -949px; width: 22px; height: 24px;  }
+   .spt-lock{background-position: -507.5px -212px; width: 22px; height: 24px; background-size: 530.5px 503.5px; }
+   .spt-locked{background-position: -52px -949px; width: 20px; height: 24px;  }
+   .spt-locked{background-position: 0px -448px; width: 20px; height: 24px; background-size: 530.5px 503.5px; }
+   .spt-logout{background-position: -382px -750px; width: 20px; height: 20px;  }
+   .spt-logout{background-position: -485px -407px; width: 20px; height: 20px; background-size: 530.5px 503.5px; }
+   .spt-mensagens.active:hover{background-position: -340px -407px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-mensagens.active{background-position: -364.5px -407px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+  .tab-link-active .spt-mensagens{background-position: -389px -407px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-mensagens{background-position: -420px -896px; width: 22px; height: 22px;  }
+   .spt-mensagens{background-position: -500px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-menu{background-position: -480px -750px; width: 20px; height: 16px;  }
+   .spt-menu{background-position: -65.5px -448px; width: 20px; height: 16px; background-size: 530.5px 503.5px; }
+  .audio-on .spt-player{background-position: -82px -814px; width: 77px; height: 77px;  }
+  .audio-on .spt-player{background-position: -400.5px -132.5px; width: 77px; height: 77px; background-size: 530.5px 503.5px; }
+   .spt-player{background-position: 0px -814px; width: 77px; height: 77px;  }
+   .spt-player{background-position: 0px -269px; width: 77px; height: 77px; background-size: 530.5px 503.5px; }
+   .spt-qrcode{background-position: -339px -896px; width: 22px; height: 22px;  }
+   .spt-qrcode{background-position: -377.5px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-receitas.active:hover{background-position: -255px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-receitas.active{background-position: -291px -407px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+  .tab-link-active .spt-receitas{background-position: -413.5px -407px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-receitas{background-position: -393px -896px; width: 22px; height: 22px;  }
+   .spt-receitas{background-position: -438px -407px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-salvo{background-position: -474px -896px; width: 18px; height: 22px;  }
+   .spt-salvo{background-position: -22.5px -448px; width: 18px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-search{background-position: -366px -896px; width: 22px; height: 22px;  }
+   .spt-search{background-position: -402px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-share{background-position: -407px -750px; width: 18px; height: 19px;  }
+   .spt-share{background-position: -507.5px -407px; width: 18px; height: 19px; background-size: 530.5px 503.5px; }
+   .spt-star{background-position: -252px -896px; width: 24px; height: 24px;  }
+   .spt-star{background-position: -202px -348.5px; width: 24px; height: 24px; background-size: 530.5px 503.5px; }
+   .spt-tel{background-position: -281px -896px; width: 24px; height: 24px;  }
+   .spt-tel{background-position: -175.5px -348.5px; width: 24px; height: 24px; background-size: 530.5px 503.5px; }
+   .spt-truques.active:hover{background-position: -507.5px -238.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-truques.active{background-position: -426.5px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+  .tab-link-active .spt-truques{background-position: -353px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-truques{background-position: -447px -896px; width: 22px; height: 22px;  }
+   .spt-truques{background-position: -328.5px -348.5px; width: 22px; height: 22px; background-size: 530.5px 503.5px; }
+   .spt-user{background-position: 0px -982px; width: 21px; height: 25px;  }
+   .spt-user{background-position: -267.5px -407px; width: 21px; height: 25px; background-size: 530.5px 503.5px; }
