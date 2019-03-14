@@ -94,7 +94,7 @@
           log('Loaded style "' + file + '".');
 
           if(self.settings.onLoaded){
-            self.settings.onLoaded({id: uid, item: __args__});
+            self.settings.onLoaded({id: uid, item: __args__, index: counter});
           }
 
           loadNextFile();
@@ -159,7 +159,7 @@
           log('Loaded script "' + file + '".');
 
           if(self.settings.onLoaded){
-            self.settings.onLoaded({id: uid, item: __args__});
+            self.settings.onLoaded({id: uid, item: __args__, index: counter});
           }
 
           loadNextFile();
@@ -212,51 +212,12 @@
 
     function getUid ()
     {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        for(var i = 0; i < 10; i++)
-        {
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-        }
-
-        return text;
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
     };
 
     window.FileLoader = new FileLoader();
 
 })();
-
-var args = {
-  timeout: 20,
-  maxAttemptLoad: 10,
-  debug: true,
-  ignoreErrorLoading: true,
-  files: [
-    {file:'assets/js/File1.js', module: 'File1'},
-    {file:'assets/css/sprite.css'},
-    {file:'assets/js/date.js'},
-    {file:'assets/js/file-not-supported.json'},
-    {file:'assets/js/numeral.min.js'},
-    {file:'assets/js/no-file.js'},
-    {file:'assets/js/File2.js', module: 'File2'},
-    {file:'https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js'},
-    {file:'https://code.jquery.com/jquery-3.3.1.js', module: "$"},
-    {file:'assets/css/app-compiled.css'}
-  ],
-  onComplete: function(){
-    console.log('---- COMPLETE LOADING FILES -----');
-    console.log('-----------------------------');
-  },
-  onError: function(__args__){
-    console.log('---- ERROR LOADING FILE -----');
-    console.log(__args__);
-    console.log('-----------------------------');
-  },
-  onLoaded: function(__args__){
-    console.log('---- LOADED FILE -----');
-    console.log(__args__);
-    console.log('-----------------------------');
-  }
-};
-FileLoader.load(args);
