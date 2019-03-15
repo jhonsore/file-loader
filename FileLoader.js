@@ -1,18 +1,18 @@
 (function () {
     "use strict";
 
-    var self;
     var counter;
     var JS_EXT = 'js';
     var CSS_EXT = 'css';
     var HEAD = document.getElementsByTagName("head")[0];
     var RESPONSE = {
       timeout: { code: '101', 'message': 'Timeout reached'},
-      maxAttempt: { code: '102', 'message': 'Maximum file upload reached'}
+      maxAttempt: { code: '102', 'message': 'Maximum file upload reached'},
+      noItems: { code: '103', 'message': 'Add at least one item to load'}
     }
 
     var FileLoader = function () {
-      self = this;
+      //this.load = this.load.bind(this);
     };
 
     FileLoader.prototype.constructor = FileLoader;
@@ -21,105 +21,114 @@
     {
       counter = 0;
 
-      self.settings = args;
-      self.files = args.files;
-      self.maxFiles = self.files.length -1;
-
-      self.timeout = args.timeout ? args.timeout : 10000;
-      self.maxAttemptLoad = args.maxAttemptLoad ? args.maxAttemptLoad : 5;
-      self.attemptLoad = 0;
-      self.timerCount = 0;
-
-      self.ignoreErrorLoading = args.ignoreErrorLoading ? args.ignoreErrorLoading : false;
-
-      if(self.settings.debug){
-        self.debug = true;
+      if(!args.files){
+        throw new Error("("+RESPONSE.noItems.code+") "+RESPONSE.noItems.message);
+        return;
       }
 
-      initTimer();
-      loadItem();
+      this.settings = args;
+      this.files = args.files;
+      this.maxFiles = this.files.length -1;
+
+      this.timeout = args.timeout ? args.timeout : 10000;
+      this.maxAttemptLoad = args.maxAttemptLoad ? args.maxAttemptLoad : 5;
+      this.attemptLoad = 0;
+      this.timerCount = 0;
+
+      this.ignoreErrorLoading = args.ignoreErrorLoading ? args.ignoreErrorLoading : false;
+
+      if(this.settings.debug){
+        this.debug = true;
+      }
+
+      this.initTimer();
+      this.loadItem();
     };
 
     //--------------------------------------
-    function initTimer(){
-      self.timer = setInterval(function(){
+    FileLoader.prototype.initTimer = function(){
+      var self = this;
+      this.timer = setInterval(function(){
         self.timerCount++;
-        log('(Fileload) timer running : '+self.timerCount);
+        self.log('(Fileload) timer running : '+self.timerCount);
         if(self.timerCount >= self.timeout){
           self.settings.onError({code: RESPONSE.timeout, response: {}});
-          stopTimer();
+          self.stopTimer();
           return false;
         }
       },1000);
     }
 
-    function stopTimer(){
-      clearInterval(self.timer);
-      self.timerCount = 0;
-      self.timer = null;
+    FileLoader.prototype.stopTimer = function(){
+      clearInterval(this.timer);
+      this.timerCount = 0;
+      this.timer = null;
     }
 
-    function loadItem(){
-      var itemLoad = self.files[counter];
+    FileLoader.prototype.loadItem = function(){
+      var itemLoad = this.files[counter];
       var fileLoad = itemLoad.file;
       var extension = fileLoad.split('.').pop();
+      var self = this;
 
       switch(extension){
         case JS_EXT:
-          checkScript(itemLoad);
+          self.checkScript(itemLoad);
         break;
         case CSS_EXT:
-          loadCss(itemLoad);
+          self.loadCss(itemLoad);
           break;
         default:
-          log('Item cannot be loaded: '+fileLoad);
-          loadNextFile();
+          self.log('Item cannot be loaded: '+fileLoad);
+          self.loadNextFile();
           break;
       }
     }
 
-    function loadCss(__args__){
+    FileLoader.prototype.loadCss = function(__args__){
       var uid = getUid();
       var file = __args__.file;
       var link = document.createElement("link");
+      var self = this;
       link.rel = "stylesheet";
       link.type = "text/css";
       link.id = uid;
       link.href = file;
 
-      log('Loading style: ' + file);
+      self.log('Loading style: ' + file);
 
       link.onload = function ()
       {
-          log('Loaded style "' + file + '".');
+          self.log('Loaded style "' + file + '".');
 
           if(self.settings.onLoaded){
             self.settings.onLoaded({id: uid, item: __args__, index: counter});
           }
 
-          loadNextFile();
+          self.loadNextFile();
       };
 
       link.onerror = function ()
       {
-          log('Error loading style "' + file + '".');
+        var self = this;
+          self.log('Error loading style "' + file + '".');
 
           //remove node added dinamically
           document.getElementById(uid).remove();
 
-          if(self.attemptLoad < self.maxAttemptLoad){
+          if(self.attemptLoad < this.maxAttemptLoad){
             self.attemptLoad++;
             //if some error occur we try to load file again
-            loadCss(__args__);
+            self.loadCss(__args__);
           }else{
             self.attemptLoad = 0;
 
             if(self.settings.onError){
               if(self.ignoreErrorLoading){
-                loadNextFile();
+                self.loadNextFile();
               }else{
-                stopTimer();
-                self.settings.onError({code: RESPONSE.maxAttempt, response: __args__});
+                self.stopTimer();
+                this.settings.onError({code: RESPONSE.maxAttempt, response: __args__});
               }
             }
           }
@@ -128,21 +137,22 @@
       HEAD.appendChild(link);
     }
 
-
-    function checkScript(__args__){
+    FileLoader.prototype.checkScript = function(__args__){
       var module = __args__.module;
+      var self = this;
 
       if(module && window[module]) {
         //module already exists
-        log(module+' already exists!');
-        loadNextFile();
+        self.log(module+' already exists!');
+        self.loadNextFile();
       }else{
         //load script
-        loadScript(__args__);
+        self.loadScript(__args__);
       }
     }
 
-    function loadScript(__args__){
+    FileLoader.prototype.loadScript = function(__args__){
+      var self = this;
 
       if(!self.timer)//timeout reached
         return false;
@@ -154,20 +164,20 @@
       script.src = file;
       script.id = uid;
 
-      script.onload = () =>
+      script.onload = function()
       {
-          log('Loaded script "' + file + '".');
+          self.log('Loaded script "' + file + '".');
 
           if(self.settings.onLoaded){
             self.settings.onLoaded({id: uid, item: __args__, index: counter});
           }
 
-          loadNextFile();
+          self.loadNextFile();
       };
 
-      script.onerror = () =>
+      script.onerror = function()
       {
-          log('Error loading script "' + file + '".');
+          self.log('Error loading script "' + file + '".');
 
           //remove node added dinamically
           document.getElementById(uid).remove();
@@ -175,37 +185,38 @@
           if(self.attemptLoad < self.maxAttemptLoad){
             self.attemptLoad++;
             //if some error occur we try to load file again
-            loadScript(__args__);
+            self.loadScript(__args__);
           }else{
             self.attemptLoad = 0;
 
             if(self.settings.onError){
               if(self.ignoreErrorLoading){
-                loadNextFile();
+                self.loadNextFile();
               }else{
-                stopTimer();
+                self.stopTimer();
                 self.settings.onError({code: RESPONSE.maxAttempt, response: __args__});
               }
             }
           }
       };
 
-      log('Loading script "' + file + '".');
+      self.log('Loading script "' + file + '".');
       HEAD.appendChild(script);
     }
 
-    function loadNextFile(){
-      if(counter < self.maxFiles){
+    FileLoader.prototype.loadNextFile = function(){
+      var self = this;
+      if(counter < this.maxFiles){
         counter++;
-        loadItem();
+        self.loadItem();
       }else{
-        stopTimer();
+        self.stopTimer();
         self.settings.onComplete();
       }
     }
 
-    function log(__msg__){
-      if(self.debug){
+    FileLoader.prototype.log = function(__msg__){
+      if(this.debug){
         console.log(__msg__);
       }
     }
@@ -218,6 +229,6 @@
         });
     };
 
-    window.FileLoader = new FileLoader();
+    window.FileLoader = FileLoader;
 
 })();

@@ -17,7 +17,74 @@
 <body>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script type="text/javascript" src="assets/js/File1.js"></script>
-  <script type="text/javascript" src="fileloader.js"></script>
+  <script type="text/javascript" src="fileloader.min.js"></script>
+
+  <script type='text/javascript'>
+
+  var arr = [
+    {file:'assets/js/File1.js', module: 'File1'},
+    {file:'assets/css/sprite.css'},
+    {file:'assets/js/date.js'},
+    {file:'assets/js/file-not-supported.json'},
+    {file:'assets/js/numeral.min.js'},
+    {file:'assets/js/no-file.js'},
+    {file:'assets/js/File2.js', module: 'File2'},
+    {file:'https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js'},
+    {file:'https://code.jquery.com/jquery-3.3.1.js', module: "$"},
+    {file:'assets/css/app-compiled.css'}
+  ];
+  var args = {
+    timeout: 20,
+    maxAttemptLoad: 10,
+    debug: true,
+    ignoreErrorLoading: true,
+    files: arr,
+    onComplete: function(){
+      console.log('---- COMPLETE LOADING FILES -----');
+      console.log('-----------------------------');
+    },
+    onError: function(__args__){
+      console.log('---- ERROR LOADING FILE -----');
+      console.log(__args__);
+      console.log('-----------------------------');
+    },
+    onLoaded: function(__args__){
+      console.log('---- LOADED FILE -----');
+      console.log(__args__);
+      console.log('-----------------------------');
+    }
+  };
+
+  var f = new FileLoader();
+  f.load(args);
+
+  //------------
+  var args = {
+    timeout: 20,
+    maxAttemptLoad: 10,
+    debug: true,
+    ignoreErrorLoading: true,
+    files: arr,
+    onComplete: function(){
+      console.log('---- COMPLETE LOADING FILES 2 -----');
+      console.log('-----------------------------');
+    },
+    onError: function(__args__){
+      console.log('---- ERROR LOADING FILE 2 -----');
+      console.log(__args__);
+      console.log('-----------------------------');
+    },
+    onLoaded: function(__args__){
+      console.log('---- LOADED FILE 2 -----');
+      console.log(__args__);
+      console.log('-----------------------------');
+    }
+  };
+
+  var f2 = new FileLoader();
+  f2.load(args);
+
+  </script>
 
 </body>
 </html>
