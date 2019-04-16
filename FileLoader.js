@@ -110,7 +110,6 @@
 
       link.onerror = function ()
       {
-        var self = this;
           self.log('Error loading style "' + file + '".');
 
           //remove node added dinamically
@@ -128,7 +127,7 @@
                 self.loadNextFile();
               }else{
                 self.stopTimer();
-                this.settings.onError({code: RESPONSE.maxAttempt, response: __args__});
+                self.settings.onError({code: RESPONSE.maxAttempt, response: __args__});
               }
             }
           }
